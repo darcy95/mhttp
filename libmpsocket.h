@@ -1,3 +1,10 @@
+/**
+ * Multipath Multi-source HTTP (mHTTP)
+ *
+ * Developers: Juhoon Kim (kimjuhoon@gmail.com), Karl Fischer
+ *
+ */
+
 #ifndef __LIBMPSOCKET_H__
 #define __LIBMPSOCKET_H__
 

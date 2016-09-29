@@ -1,3 +1,10 @@
+/**
+ * Multipath Multi-source HTTP (mHTTP)
+ *
+ * Developers: Juhoon Kim (kimjuhoon@gmail.com), Karl Fischer
+ *
+ */
+
 void print_time(const char* txt) {
     struct timeval tv;
     gettimeofday(&tv, NULL);

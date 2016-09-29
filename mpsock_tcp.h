@@ -1,3 +1,10 @@
+/**
+ * Multipath Multi-source HTTP (mHTTP)
+ *
+ * Developers: Juhoon Kim (kimjuhoon@gmail.com), Karl Fischer
+ *
+ */
+
 #ifndef SSOCK_LISTEN_BACKLOG
 #define SSOCK_LISTEN_BACKLOG SOMAXCONN
 #endif

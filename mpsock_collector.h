@@ -1,3 +1,10 @@
+/**
+ * Multipath Multi-source HTTP (mHTTP)
+ *
+ * Developers: Juhoon Kim (kimjuhoon@gmail.com), Karl Fischer
+ *
+ */
+
 #ifndef __MPSOCK_COLLECTOR_H__
 #define __MPSOCK_COLLECTOR_H__
 

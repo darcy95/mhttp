@@ -1,3 +1,10 @@
+/**
+ * Multipath Multi-source HTTP (mHTTP)
+ *
+ * Developers: Juhoon Kim (kimjuhoon@gmail.com), Karl Fischer
+ *
+ */
+
 #ifndef __MPSOCK_DYNAMIC_ALPHA_H__
 #define __MPSOCK_DYNAMIC_ALPHA_H__
 

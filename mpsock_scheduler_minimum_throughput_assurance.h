@@ -1,3 +1,10 @@
+/**
+ * Multipath Multi-source HTTP (mHTTP)
+ *
+ * Developers: Juhoon Kim (kimjuhoon@gmail.com), Karl Fischer
+ *
+ */
+
 #ifndef __MPSOCK_SCHEDULER_MINIMUM_THROUGHPUT_ASSURANCE_H__
 #define __MPSOCK_SCHEDULER_MINIMUM_THROUGHPUT_ASSURANCE_H__
 
