@@ -9,7 +9,7 @@ The mHTTP design consists of: (i) multiHTTP: a set of modified socket APIs which
 
 mHTTP is using http_parser and uthash
 
-    #* http_parser
+    # http_parser
     Based on src/http/ngx_http_parse.c from NGINX copyright Igor Sysoev
 
     Additional changes are licensed under the same terms as NGINX and
@@ -35,7 +35,7 @@ mHTTP is using http_parser and uthash
 
 
 
-    #* uthash
+    # uthash
     Copyright (c) 2003-2013, Troy D. Hanson     http://uthash.sourceforge.net
     All rights reserved.
 
