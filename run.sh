@@ -110,7 +110,7 @@ else
 fi
 if [[ -z ${17} ]]
 then
-	scheduler_algo=2
+	scheduler_algo=1
 else
 	scheduler_algo=${17}
 fi
