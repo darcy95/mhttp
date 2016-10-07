@@ -303,14 +303,17 @@ init(void)
 
 	LOG_INFO("%sset maximum requests per connection to %d",COND_EVENT,max_req_con);
 
-	s = getenv("SCHEDULER_ALGO");
-    
-    if(s)
-	{
-        scheduler_algo = atoi(s);
-    }
-
-	printf("using scheduler algorithm %d\n",scheduler_algo);
+	// //
+    // // The choice of a scheduler algorithm is disabled (jkim)
+    // // 
+    //
+    //  s = getenv("SCHEDULER_ALGO");    
+    //  if(s)
+    //  {
+    //      scheduler_algo = atoi(s);
+    //  }
+    //
+	//  printf("using scheduler algorithm %d\n",scheduler_algo);
 
 	s = getenv("MAX_REQ_SERV");
     

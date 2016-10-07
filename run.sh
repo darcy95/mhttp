@@ -108,17 +108,11 @@ then
 else
 	log_metrics=${16}
 fi
-if [[ -z ${17} ]]
-then
-	scheduler_algo=1
-else
-	scheduler_algo=${17}
-fi
 
 #max_req_mpsocket=$9
 application=wget
 app_options=" -e robots=off -E -H -k -K -v -t 1 --no-check-certificate --no-cache --no-proxy --no-dns-cache -p"
 
-LD_PRELOAD=./libmpsocket.so INITIAL_CHUNK_SIZE_IN_KB=${chunk_size} MAX_REQ_CON=${max_req_con} MAX_REQ_SERV=${max_req_serv} MAX_REQ_MPSOCKET=${max_req_mpsocket} CONNECTIONS=${conn_count} INITIAL_ALPHA=${initial_alpha} SCHEDULER_VERSION=${scheduler_version} ALPHA_MAX=${alpha_max} PROCESSING_SKIPS=${processing_skips} INTERFACES=${interfaces} IPADDRS=${ipaddrs} INITIAL_SECOND_PATH=${initial_second_path} RANDOM_PATH=${random_path} LOG_DECISIONS=${log_decisions} LOG_TRAFFIC=${log_traffic} LOG_METRICS=${log_metrics} SCHEDULER_ALGO=${scheduler_algo} ${application} ${app_options} ${target}
+LD_PRELOAD=./libmpsocket.so INITIAL_CHUNK_SIZE_IN_KB=${chunk_size} MAX_REQ_CON=${max_req_con} MAX_REQ_SERV=${max_req_serv} MAX_REQ_MPSOCKET=${max_req_mpsocket} CONNECTIONS=${conn_count} INITIAL_ALPHA=${initial_alpha} SCHEDULER_VERSION=${scheduler_version} ALPHA_MAX=${alpha_max} PROCESSING_SKIPS=${processing_skips} INTERFACES=${interfaces} IPADDRS=${ipaddrs} INITIAL_SECOND_PATH=${initial_second_path} RANDOM_PATH=${random_path} LOG_DECISIONS=${log_decisions} LOG_TRAFFIC=${log_traffic} LOG_METRICS=${log_metrics} ${application} ${app_options} ${target}
 
 exit 0

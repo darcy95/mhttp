@@ -213,7 +213,7 @@
 * 1: dynamic alpha
 * 2: time slices
 */
-#define SCHEDULER_ALGO_DEFAULT 2
+#define SCHEDULER_ALGO_DEFAULT 1
 
 // use max(T,T_min) (cases 1.3 and 2.3) in time chunk scheduler algorithm
 #define FLAG_MAX_ALGO 0
