@@ -92,6 +92,8 @@ clean:
 	$(RM) $(LIBDIR)/$(LIB).la
 	$(RM) $(LIBDIR)/$(LIB).so
 	$(RM) $(LIBDIR)/$(LIB).so.0.0.0
-#$(RM) 1M* 2M* 4M* 8M* 16M* 32M* 64M* 128M* 256M* 512M* lubuntu-13.04-desktop-amd64.iso*
+	$(RM) $(LIBDIR)
+	$(RM) $(DEPSDIR)
+	$(RM) $(OBJDIR)
 
 .PHONY:

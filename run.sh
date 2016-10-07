@@ -6,7 +6,7 @@ usage()
 {
 cat << EOF
 
-Usage: sudo $0 <initial_chunk_size_in_kb> <connections> <comma_sep_intf> <comma_sep_ips> <target_file> <max_req_con> <max_req_serv> <initial_alpha> <scheduler_version> <alpha_max> <processing_skips> <initial_second_path> <random_path> <log_decisions> <log_traffic> <log_metrics>
+Usage: sudo $0 <initial_chunk_size_in_kb> <connections> <comma_sep_intf> <comma_sep_ips> <target_file> <max_req_con> <max_req_serv> <initial_alpha> <processing_skips> <initial_second_path> <random_path> <log_decisions> <log_traffic> <log_metrics>
 
 This program downloads an HTTP object from multiple web servers
 over multiple TCP connections using multiple interfaces.
@@ -20,8 +20,6 @@ OPTIONS:
     <comma_sep_ints>            interfaces to be used. must be separated by comma without any blank; 0 for automatic collection.
     <comma_sep_ips>             target (server) IP addresses to be used. 0 will let multiDNS do the task.
     <target_file>               the target file including full domain and url. (e.g., http://sphotos-f.ak.fbcdn.net/hsh3/94_n.jpg)
-	<alpha_max>                 maximum value for alpha in time slice scheduling
-	<scheduler_version>         determines the version of the scheduler you want to use
 	<processing_skips>          number of calculus skips to save processing overhead
 	<initial_second_path>       use an initial second path (0: false, 1: true)
 	<random_path>               use a random interface to create new path (0: false, 1: true)
@@ -60,18 +58,7 @@ target=$5
 max_req_con=$6
 max_req_serv=$7
 initial_alpha=$8
-if [[ -z $9 ]]
-then
-	scheduler_version=-1
-else
-	scheduler_version=$9
-fi
-if [[ -z ${10} ]]
-then
-	alpha_max=-1
-else
-	alpha_max=${10}
-fi
+
 if [[ -z ${11} ]]
 then
 	processing_skips=-1
@@ -113,6 +100,6 @@ fi
 application=wget
 app_options=" -e robots=off -E -H -k -K -v -t 1 --no-check-certificate --no-cache --no-proxy --no-dns-cache -p"
 
-LD_PRELOAD=./libmpsocket.so INITIAL_CHUNK_SIZE_IN_KB=${chunk_size} MAX_REQ_CON=${max_req_con} MAX_REQ_SERV=${max_req_serv} MAX_REQ_MPSOCKET=${max_req_mpsocket} CONNECTIONS=${conn_count} INITIAL_ALPHA=${initial_alpha} SCHEDULER_VERSION=${scheduler_version} ALPHA_MAX=${alpha_max} PROCESSING_SKIPS=${processing_skips} INTERFACES=${interfaces} IPADDRS=${ipaddrs} INITIAL_SECOND_PATH=${initial_second_path} RANDOM_PATH=${random_path} LOG_DECISIONS=${log_decisions} LOG_TRAFFIC=${log_traffic} LOG_METRICS=${log_metrics} ${application} ${app_options} ${target}
+LD_PRELOAD=./libmpsocket.so INITIAL_CHUNK_SIZE_IN_KB=${chunk_size} MAX_REQ_CON=${max_req_con} MAX_REQ_SERV=${max_req_serv} MAX_REQ_MPSOCKET=${max_req_mpsocket} CONNECTIONS=${conn_count} INITIAL_ALPHA=${initial_alpha} PROCESSING_SKIPS=${processing_skips} INTERFACES=${interfaces} IPADDRS=${ipaddrs} INITIAL_SECOND_PATH=${initial_second_path} RANDOM_PATH=${random_path} LOG_DECISIONS=${log_decisions} LOG_TRAFFIC=${log_traffic} LOG_METRICS=${log_metrics} ${application} ${app_options} ${target}
 
 exit 0

@@ -241,8 +241,8 @@
 #define USE_HARMONIC_MEAN 1
 
 // Default values
-#define SCHEDULER_VERSION_DEFAULT 2
-#define ALPHA_MAX_DEFAULT 20
+#define SCHEDULER_VERSION_DEFAULT 2 // Only relevant to time_chunk_algorithm
+#define ALPHA_MAX_DEFAULT 20        // Only relevant to time_chunk_algorithm
 #define PROCESSING_SKIPS_DEFAULT 0
 
 // print default output

@@ -261,21 +261,24 @@ init(void)
 	// Parse input environment variables
     const char *s;
 
-	s = getenv("SCHEDULER_VERSION");
-    
-    if(s)
-	{
-        version = atoi(s);
-    }
-
-	if(version == -1)
-	{
-		version = SCHEDULER_VERSION_DEFAULT;
-	}
-
-	if(USE_ASSERTS) assert(version >= 0 && version < 3);
-
-	//printf("[mHTTP]\tusing scheduler version %d"version);
+    //
+	// //
+    // // The choice of a scheduler version is disabled (jkim)
+    // // a scheduler version is only relevant to time_chunk_algorithm
+    // // 
+    //
+	// s = getenv("SCHEDULER_VERSION");
+    //
+    // if (s)
+    //     version = atoi(s);
+    //
+	// if (version == -1)
+    //     version = SCHEDULER_VERSION_DEFAULT;
+    //
+	// if (USE_ASSERTS) assert(version >= 0 && version < 3);
+    //
+	// printf("[mHTTP]\tusing scheduler version %d"version);
+    //
 
     s = getenv("INITIAL_CHUNK_SIZE_IN_KB");
     
@@ -303,17 +306,18 @@ init(void)
 
 	LOG_INFO("%sset maximum requests per connection to %d",COND_EVENT,max_req_con);
 
+    //
 	// //
     // // The choice of a scheduler algorithm is disabled (jkim)
     // // 
     //
     //  s = getenv("SCHEDULER_ALGO");    
-    //  if(s)
-    //  {
+    //
+    //  if (s)
     //      scheduler_algo = atoi(s);
-    //  }
     //
 	//  printf("using scheduler algorithm %d\n",scheduler_algo);
+    //
 
 	s = getenv("MAX_REQ_SERV");
     
@@ -393,19 +397,22 @@ init(void)
 
 	printf("set initial_alpha to %d\n",initial_alpha);
 
-	s = getenv("ALPHA_MAX");
-    
-    if(s)
-	{
-        alpha_max = atoi(s);
-    }
-
-	if(alpha_max == -1)
-	{
-		alpha_max = ALPHA_MAX_DEFAULT;
-	}
-
-	printf("set alpha_max to %d\n",alpha_max);
+    //
+	// //
+    // // alpha_max is hard-coded (jkim)
+    // // Only relevant to time_chunk_algorithm
+    // // 
+    //
+	// s = getenv("ALPHA_MAX");
+    //
+    // if (s)
+    //      alpha_max = atoi(s);
+    // 
+	// if (alpha_max == -1)
+	//      alpha_max = ALPHA_MAX_DEFAULT;
+    //
+	// printf("set alpha_max to %d\n",alpha_max);
+    //
 
 	s = getenv("PROCESSING_SKIPS");
     
