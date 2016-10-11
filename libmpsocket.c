@@ -15,9 +15,9 @@ static int initial_chunk_size;
 static int conns;
 static char *intf_list;
 static char *ip_list;
-static int max_req_con;
-static int max_req_serv;
-static int max_req_mpsocket;
+static int max_req_con = MAX_REQ_CON;
+static int max_req_serv = MAX_REQ_SERV;
+static int max_req_mpsocket = MAX_REQ_MPSOCKET;
 static int initial_alpha;
 int version = SCHEDULER_VERSION_DEFAULT;
 int alpha_max = ALPHA_MAX_DEFAULT;
@@ -293,18 +293,23 @@ init(void)
 
 	printf("set initial_chunk_size = %d kB\n",initial_chunk_size/1024);
 
-	s = getenv("MAX_REQ_CON");
-    
-    if(s)
-	{
-        max_req_con = atoi(s);
-    }
-	else
-	{
-		max_req_con = MAX_REQ_CON;
-    }
-
-	LOG_INFO("%sset maximum requests per connection to %d",COND_EVENT,max_req_con);
+    //
+	// //
+    // // The maximum requests limit is disabled (jkim)
+    // // 
+    //
+	// s = getenv("MAX_REQ_CON");
+    //
+    // if(s)
+	// {
+    //    max_req_con = atoi(s);
+    // }
+	// else
+	// {
+	//    max_req_con = MAX_REQ_CON;
+    // }
+    //
+	// LOG_INFO("%sset maximum requests per connection to %d",COND_EVENT,max_req_con);
 
     //
 	// //
@@ -319,18 +324,23 @@ init(void)
 	//  printf("using scheduler algorithm %d\n",scheduler_algo);
     //
 
-	s = getenv("MAX_REQ_SERV");
-    
-    if(s)
-	{
-        max_req_serv = atoi(s);
-    }
-	else
-	{
-		max_req_serv = MAX_REQ_SERV;
-    }
-
-	LOG_DEBUG("%sset maximum requests per server to %d",COND_EVENT,max_req_serv);
+    //
+	// //
+    // // The maximum requests limit is disabled (jkim)
+    // // 
+    //
+	// s = getenv("MAX_REQ_SERV");
+    //
+    // if(s)
+	// {
+    //    max_req_serv = atoi(s);
+    // }
+	// else
+	// {
+	//    max_req_serv = MAX_REQ_SERV;
+    // }
+    // 
+	// LOG_DEBUG("%sset maximum requests per server to %d",COND_EVENT,max_req_serv);
 
 	s = getenv("INITIAL_SECOND_PATH");
     
@@ -371,18 +381,23 @@ init(void)
         log_metrics = atoi(s);
     }
 
-	s = getenv("MAX_REQ_MPSOCKET");
-    
-    if(s)
-	{
-        max_req_mpsocket = atoi(s);
-    }
-	else
-	{
-		max_req_mpsocket = MAX_REQ_MPSOCKET;
-    }
-
-	LOG_INFO("%sset maximum requests per mpsocket to %d",COND_EVENT,max_req_mpsocket);
+    //
+	// //
+    // // The maximum requests limit is disabled (jkim)
+    // // 
+    //
+	// s = getenv("MAX_REQ_MPSOCKET");
+    // 
+    // if(s)
+	// {
+    //    max_req_mpsocket = atoi(s);
+    // }
+	// else
+	// {
+	//	  max_req_mpsocket = MAX_REQ_MPSOCKET;
+    // }
+    // 
+	// LOG_INFO("%sset maximum requests per mpsocket to %d",COND_EVENT,max_req_mpsocket);
 
 	s = getenv("INITIAL_ALPHA");
     

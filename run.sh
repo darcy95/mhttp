@@ -6,7 +6,7 @@ usage()
 {
 cat << EOF
 
-Usage: sudo $0 <initial_chunk_size_in_kb> <connections> <comma_sep_intf> <comma_sep_ips> <target_file> <max_req_con> <max_req_serv> <initial_alpha> <processing_skips> <initial_second_path> <random_path> <log_decisions> <log_traffic> <log_metrics>
+Usage: sudo $0 <initial_chunk_size_in_kb> <connections> <comma_sep_intf> <comma_sep_ips> <target_file> <initial_alpha> <processing_skips> <initial_second_path> <random_path> <log_decisions> <log_traffic> <log_metrics>
 
 This program downloads an HTTP object from multiple web servers
 over multiple TCP connections using multiple interfaces.
@@ -55,8 +55,6 @@ conn_count=$2
 interfaces=$3
 ipaddrs=$4
 target=$5
-max_req_con=$6
-max_req_serv=$7
 initial_alpha=$8
 
 if [[ -z ${11} ]]
@@ -100,6 +98,6 @@ fi
 application=wget
 app_options=" -e robots=off -E -H -k -K -v -t 1 --no-check-certificate --no-cache --no-proxy --no-dns-cache -p"
 
-LD_PRELOAD=./libmpsocket.so INITIAL_CHUNK_SIZE_IN_KB=${chunk_size} MAX_REQ_CON=${max_req_con} MAX_REQ_SERV=${max_req_serv} MAX_REQ_MPSOCKET=${max_req_mpsocket} CONNECTIONS=${conn_count} INITIAL_ALPHA=${initial_alpha} PROCESSING_SKIPS=${processing_skips} INTERFACES=${interfaces} IPADDRS=${ipaddrs} INITIAL_SECOND_PATH=${initial_second_path} RANDOM_PATH=${random_path} LOG_DECISIONS=${log_decisions} LOG_TRAFFIC=${log_traffic} LOG_METRICS=${log_metrics} ${application} ${app_options} ${target}
+LD_PRELOAD=./libmpsocket.so INITIAL_CHUNK_SIZE_IN_KB=${chunk_size} CONNECTIONS=${conn_count} INITIAL_ALPHA=${initial_alpha} PROCESSING_SKIPS=${processing_skips} INTERFACES=${interfaces} IPADDRS=${ipaddrs} INITIAL_SECOND_PATH=${initial_second_path} RANDOM_PATH=${random_path} LOG_DECISIONS=${log_decisions} LOG_TRAFFIC=${log_traffic} LOG_METRICS=${log_metrics} ${application} ${app_options} ${target}
 
 exit 0

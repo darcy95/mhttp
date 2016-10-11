@@ -125,13 +125,10 @@
 // maximum number of interfaces to use
 #define MAX_INTERFACES 10
 
-// maximum requests per connection for one object
-//#define MAX_REQ_CON 15	// per connection
-//#define MAX_REQ_SERV 30	// per object
-//#define MAX_REQ_MPSOCKET	1000 // per mpsocket - maybe later needed???
+// maximum requests per connection for one object (0: no limit)
 #define MAX_REQ_CON 0	// per connection
-#define MAX_REQ_SERV 0	// per object
-#define MAX_REQ_MPSOCKET	0 // per mpsocket - maybe later needed???
+#define MAX_REQ_SERV 0	// per object 
+#define MAX_REQ_MPSOCKET 0 // per mpsocket - maybe later needed???
 
 // define whether save pointer advances are done by application or by collector threads
 #define DO_THREAD_ADVANCE_POINTER 1
