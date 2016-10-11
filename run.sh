@@ -6,15 +6,12 @@ usage()
 {
 cat << EOF
 
-Usage: sudo $0 <initial_chunk_size_in_kb> <connections> <comma_sep_intf> <comma_sep_ips> <target_file> <initial_alpha> <processing_skips> <initial_second_path> <random_path> <log_decisions> <log_traffic> <log_metrics>
-
+Usage: sudo $0 <initial_chunk_size_in_kb> <connections> <comma_sep_intf> <comma_sep_ips> <target_file> <initial_alpha> <processing_skips> <initial_second_path> <random_path>
 This program downloads an HTTP object from multiple web servers
 over multiple TCP connections using multiple interfaces.
 
 OPTIONS:
     <initial_chunk_size_in_kb>  the initial size of first chunk to be delivered with one HTTP response. (in KB)
-    <max_req_con>               max requests per connection - for measurement: set to 0 for unlimited requests
-    <max_req_serv>              max requests per server - for measurement: set to 0 for unlimited requests
     <initial_alpha>             initial alpha value for TCP approach scheduling - should be around 20 to 30
     <connections>               the number of connections to be established.
     <comma_sep_ints>            interfaces to be used. must be separated by comma without any blank; 0 for automatic collection.
@@ -23,9 +20,6 @@ OPTIONS:
 	<processing_skips>          number of calculus skips to save processing overhead
 	<initial_second_path>       use an initial second path (0: false, 1: true)
 	<random_path>               use a random interface to create new path (0: false, 1: true)
-	<log_decisions>             log scheduler decisions (0: false, 1: true)
-	<log_traffic>               log traffic distribution (0: false, 1: true)
-	<log_metrics>               log path characterization (0: false, 1: true)
 
 EXAMPLES:
     sudo $0 64 3 eth0,wlan0 192.168.1.1,192.168.2.1,192.168.3.1 http://www.example.com/target.pdf 15 30 40
@@ -75,29 +69,11 @@ then
 else
 	random_path=${13}
 fi
-if [[ -z ${14} ]]
-then
-	log_decisions=1
-else
-	log_decisions=${14}
-fi
-if [[ -z ${15} ]]
-then
-	log_traffic=0
-else
-	log_traffic=${15}
-fi
-if [[ -z ${16} ]]
-then
-	log_metrics=0
-else
-	log_metrics=${16}
-fi
 
 #max_req_mpsocket=$9
 application=wget
 app_options=" -e robots=off -E -H -k -K -v -t 1 --no-check-certificate --no-cache --no-proxy --no-dns-cache -p"
 
-LD_PRELOAD=./libmpsocket.so INITIAL_CHUNK_SIZE_IN_KB=${chunk_size} CONNECTIONS=${conn_count} INITIAL_ALPHA=${initial_alpha} PROCESSING_SKIPS=${processing_skips} INTERFACES=${interfaces} IPADDRS=${ipaddrs} INITIAL_SECOND_PATH=${initial_second_path} RANDOM_PATH=${random_path} LOG_DECISIONS=${log_decisions} LOG_TRAFFIC=${log_traffic} LOG_METRICS=${log_metrics} ${application} ${app_options} ${target}
+LD_PRELOAD=./libmpsocket.so INITIAL_CHUNK_SIZE_IN_KB=${chunk_size} CONNECTIONS=${conn_count} INITIAL_ALPHA=${initial_alpha} PROCESSING_SKIPS=${processing_skips} INTERFACES=${interfaces} IPADDRS=${ipaddrs} INITIAL_SECOND_PATH=${initial_second_path} RANDOM_PATH=${random_path} ${application} ${app_options} ${target}
 
 exit 0

@@ -360,26 +360,31 @@ init(void)
 
 	LOG_INFO("%srandom path set to %d",COND_EVENT,use_random_path);
 
-	s = getenv("LOG_DECISIONS");
-    
-    if(s)
-	{
-        log_decisions = atoi(s);
-    }
+    //
+	// //
+    // // Logging is temporarily disabled, but it should be done to a file later.
+    // // 
+    //
+	// s = getenv("LOG_DECISIONS");
+    // 
+    // if(s)
+	// {
+    //     log_decisions = atoi(s);
+    // }
 
-	s = getenv("LOG_TRAFFIC");
-    
-    if(s)
-	{
-        log_traffic = atoi(s);
-    }
+	// s = getenv("LOG_TRAFFIC");
+    // 
+    // if(s)
+	// {
+    //     log_traffic = atoi(s);
+    // }
 
-	s = getenv("LOG_METRICS");
-    
-    if(s)
-	{
-        log_metrics = atoi(s);
-    }
+	// s = getenv("LOG_METRICS");
+    //
+    // if(s)
+	// {
+    //    log_metrics = atoi(s);
+    // }
 
     //
 	// //
