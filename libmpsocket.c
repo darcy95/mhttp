@@ -18,7 +18,7 @@ static char *ip_list;
 static int max_req_con = MAX_REQ_CON;
 static int max_req_serv = MAX_REQ_SERV;
 static int max_req_mpsocket = MAX_REQ_MPSOCKET;
-static int initial_alpha;
+static int initial_alpha = INITIAL_ALPHA;
 int version = SCHEDULER_VERSION_DEFAULT;
 int alpha_max = ALPHA_MAX_DEFAULT;
 int processing_skips = PROCESSING_SKIPS_DEFAULT;
@@ -342,23 +342,23 @@ init(void)
     // 
 	// LOG_DEBUG("%sset maximum requests per server to %d",COND_EVENT,max_req_serv);
 
-	s = getenv("INITIAL_SECOND_PATH");
-    
-    if(s)
-	{
-        use_initial_second_path = atoi(s);
-    }
+	//s = getenv("INITIAL_SECOND_PATH");
+    // 
+    // if(s)
+	// {
+    //     use_initial_second_path = atoi(s);
+    // }
+    // 
+	// LOG_INFO("%sintial second path set to %d",COND_EVENT,use_initial_second_path);
 
-	LOG_INFO("%sintial second path set to %d",COND_EVENT,use_initial_second_path);
-
-	s = getenv("RANDOM_PATH");
-    
-    if(s)
-	{
-        use_random_path = atoi(s);
-    }
-
-	LOG_INFO("%srandom path set to %d",COND_EVENT,use_random_path);
+	// s = getenv("RANDOM_PATH");
+    //
+    // if(s)
+	// {
+    //    use_random_path = atoi(s);
+    // }
+    // 
+	// LOG_INFO("%srandom path set to %d",COND_EVENT,use_random_path);
 
     //
 	// //
@@ -404,18 +404,23 @@ init(void)
     // 
 	// LOG_INFO("%sset maximum requests per mpsocket to %d",COND_EVENT,max_req_mpsocket);
 
-	s = getenv("INITIAL_ALPHA");
-    
-    if(s)
-	{
-        initial_alpha = atoi(s);
-    }
-	else
-	{
-		initial_alpha = INITIAL_ALPHA;
-    }
-
-	printf("set initial_alpha to %d\n",initial_alpha);
+    //
+	// //
+    // // The choice of an initial alpha is hard-coded (jkim)
+    // // 
+    //
+	// s = getenv("INITIAL_ALPHA");
+    //
+    // if(s)
+	// {
+    //     initial_alpha = atoi(s);
+    // }
+	// else
+	// {
+	//     initial_alpha = INITIAL_ALPHA;
+    // }
+    //
+	// printf("set initial_alpha to %d\n",initial_alpha);
 
     //
 	// //
@@ -434,19 +439,24 @@ init(void)
 	// printf("set alpha_max to %d\n",alpha_max);
     //
 
-	s = getenv("PROCESSING_SKIPS");
-    
-    if(s)
-	{
-        processing_skips = atoi(s);
-    }
-
-	if(processing_skips = -1)
-	{
-		processing_skips = PROCESSING_SKIPS_DEFAULT;
-	}
-
-	LOG_INFO("%sset processing_skips to %d",COND_EVENT,processing_skips);
+    //
+	// //
+    // // processing_skips is disabled (and will eventually deleted) (jkim)
+    // // 
+    //
+	// s = getenv("PROCESSING_SKIPS");
+    //
+    // if(s)
+	// {
+    //    processing_skips = atoi(s);
+    // }
+    //
+	// if(processing_skips = -1)
+	// {
+	// 	  processing_skips = PROCESSING_SKIPS_DEFAULT;
+	// }
+    // 
+	// LOG_INFO("%sset processing_skips to %d",COND_EVENT,processing_skips);
 
     const char *p;
     p = getenv("CONNECTIONS");
