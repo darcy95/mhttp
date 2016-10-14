@@ -5,8 +5,8 @@
  *
  */
 
-#ifndef __MPSOCK_DYNAMIC_ALPHA_H__
-#define __MPSOCK_DYNAMIC_ALPHA_H__
+#ifndef __MPSOCK_ALGORITHM_H__
+#define __MPSOCK_ALGORITHM_H__
 
 #include "libmpsocket.h"
 #include "mpsock_scheduler.h"

@@ -16,15 +16,10 @@ typedef struct
     size_t start_byte;          // Key: the first byte of this chunk within the range of the file_size
                                 // (i.e., 0 ~ file_size, see mpsock_data_pool). 
                                 // Once set, this value will not change.
-
     size_t size;      			// the size of the payload followed by one HTTP response message
-
     size_t pos_delivered;       // the cursor that points out the last byte of the already delivered data (to application)
-
     size_t pos_stored;          // the cursor that points out the last byte of the data chunk that is currently stored.
-
     void *data;                 // data buffer
-
 	UT_hash_handle hh;          // makes this structure hashable
 } mpsock_data;
 
@@ -35,45 +30,30 @@ typedef struct
 typedef struct
 {
     int fd; // Key (= parser->fd = parsers->parser->fd)
-
-    size_t file_size; // the total length of the requested file (response header EXCLUDED)
+    size_t file_size;               // the total length of the requested file (response header EXCLUDED)
 	size_t response_header_length;
-
-    size_t pos_read;  // the start-byte of the chunk to be READ. (see find_chunk(2))
-                      // This will be used to lookup the data chunk to be read.
-                      // (range: 0 ~ file_size)
-
-	int finished_parsers; // number of parsers with no more requests // TODO: make better!!!
-
-	int response_header_delivered; // flag to determine whether first response was already delivered to application
-
-    mpsock_data *chunks;	// payload data chunks
-
-	size_t next_start_byte;	// the next start byte to be requested (range (start_byte) ~ (start_byte+chunk->size))
-
-    void *buffer;        // the pointer to the buffer in which the ready-to-be-read data is stored.
-    //int pos_buffer_read; // the position of the read cursor. Data is delivered to the application until this position.
-    size_t pos_buffer_save; // the position of the save cursor. Data is stored until this position.
-	size_t pos_buffer_read; // The difference between pos_buffer_read and pos_buffer_save can be seen as data to be read.
-	
+    size_t pos_read;                // the start-byte of the chunk to be READ. (see find_chunk(2))
+                                    // This will be used to lookup the data chunk to be read.
+                                    // (range: 0 ~ file_size)
+	int finished_parsers;           // number of parsers with no more requests // TODO: make better!!!
+	int response_header_delivered;  // flag to determine whether first response was already delivered to application
+    mpsock_data *chunks;            // payload data chunks
+	size_t next_start_byte;         // the next start byte to be requested (range (start_byte) ~ (start_byte+chunk->size))
+    void *buffer;                   // the pointer to the buffer in which the ready-to-be-read data is stored.
+    //int pos_buffer_read;          // the position of the read cursor. Data is delivered to the application until this position.
+    size_t pos_buffer_save;         // the position of the save cursor. Data is stored until this position.
+	size_t pos_buffer_read;         // The difference between pos_buffer_read and pos_buffer_save can be seen as data to be read.
 	// temporary buffer - here socket data is transfered to before it is parsed
 	size_t volatile_buffer_size;
     char *volatile_buffer;
-
-	int highest_fd;	// highest file descriptor in fd_list
-
-	// keep track of how many connections are used for this pool
-	int open_connections;
-	
-	int max_connections; // maximum number of allowed parallel connections for this pool
-
-	// collector thread worker related stuff (necessary for monitoring tcp buffers)
-	pthread_t pid;			// collector thread id
-	int is_thread_running;	// flag telling us whether collector thread for this pool is running
-	fd_set fd_list;			// socket descriptor list -> tcp buffers to monitor
-	fd_set fd_working;		// working set for pselect()
-
-	UT_hash_handle hh;   // makes this structure hashable
+	int highest_fd;                 // highest file descriptor in fd_list
+	int open_connections;           // keep track of how many connections are used for this pool
+	int max_connections;            // maximum number of allowed parallel connections for this pool
+	pthread_t pid;                  // collector thread id. Collector thread worker related stuff (necessary for monitoring tcp buffers)
+	int is_thread_running;          // flag telling us whether collector thread for this pool is running
+	fd_set fd_list;                 // socket descriptor list -> tcp buffers to monitor
+	fd_set fd_working;              // working set for pselect()
+	UT_hash_handle hh;              // makes this structure hashable
 } mpsock_data_pool;
 
 /*
