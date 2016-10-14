@@ -3,8 +3,7 @@ LIB=libmpsocket
 LIBDIR=.libs
 DEPSDIR=.deps
 
-SRCS=http_parser.c mpsock_pool.c mpsock_connection.c mpsock_tcp.c mpsock_socket.c mpsock_collector.c mpsock_interface.c mpsock_dns.c mpsock_buffer.c mpsock_scheduler.c mpsock_scheduler_minimum_throughput_assurance.c mpsock_scheduler_algorithms.c mpsock_misc.c
-
+SRCS=http_parser.c mpsock_pool.c mpsock_connection.c mpsock_tcp.c mpsock_socket.c mpsock_collector.c mpsock_interface.c mpsock_dns.c mpsock_buffer.c mpsock_scheduler.c mpsock_scheduler_minimum_throughput_assurance.c mpsock_scheduler_algorithms.c mpsock_misc.c 
 HEADERS=$(SRCS:.c=.h) libmpsocket.h
 
 OBJDIR=.obj
@@ -49,7 +48,7 @@ $(LIB).so: $(LIB).o
 	$(AR) cr $(LIBDIR)/$(LIB).a $(LIB).o
 	ranlib $(LIBDIR)/$(LIB).a
 
-$(LIB).o: $(LIB).c uthash.h $(OBJ)
+$(LIB).o: $(LIB).c mpsock_http.h uthash.h $(OBJ)
 	$(CC) -I. -DLOG_LEVEL=$(LIB_LOG_LVL) -g $(OPT) -MT $(LIB).lo -MD -MP -MF $(DEPSDIR)/$(LIB).Tpo -c $(LIB).c -fPIC -DPIC -o $(LIBDIR)/$(LIB).o
 	$(CC) -I. -DLOG_LEVEL=$(LIB_LOG_LVL) -g $(OPT) -MT $(LIB).lo -MD -MP -MF $(DEPSDIR)/$(LIB).Tpo -c $(LIB).c -o $(LIB).o >/dev/null 2>&1
 # ====================================================

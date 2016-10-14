@@ -6,6 +6,7 @@
 #include "mpsock_dns.h"
 #include "mpsock_interface.h"
 #include "mpsock_buffer.h"
+#include "mpsock_misc.h"
 
 /*
  * Global variables
@@ -231,11 +232,6 @@ int timeval_subtract(struct timeval *result, struct timeval *x, struct timeval *
 //    free(p->parser);
 //    p->parser = NULL;
 //}
-
-#include "./mpsock_misc.h"
-//#include "./mpsock_tcp.h"
-//#include "./mpsock_interface.h"
-//#include "./mpsock_http.h"
 
 void signalhandler(int signum)
 {

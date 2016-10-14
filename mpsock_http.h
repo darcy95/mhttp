@@ -5,6 +5,8 @@
  *
  */
 
+#ifndef __MPSOCK_HTTP_H__
+#define __MPSOCK_HTTP_H__
 
 /*
  * This structure represents a data bucket where one socket can store its data
@@ -1310,3 +1312,5 @@ void init_mhttp(http_parser *parser)
 
     http_parser_init(parser, HTTP_BOTH);
 }
+
+#endif
