@@ -10,6 +10,7 @@ install:
 script:
     - make clean
     - make
-    - sudo ./run.sh 64 3 wlp2s0,wlp2s0 0 http://mirror.its.dal.ca/archlinux/iso/2016.10.01/archlinux-bootstrap-2016.10.01-i686.tar.gz 15 30 40
+    - sudo make test-1M
+    - sudo make test-5M
 
 ...
