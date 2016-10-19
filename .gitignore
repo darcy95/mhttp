@@ -3,7 +3,5 @@
 .obj
 libmpsocket.o
 libmpsocket.so
-test/http-*
-test/mhttp-*
 *.swp
 

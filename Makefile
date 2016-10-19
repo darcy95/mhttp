@@ -18,8 +18,6 @@ RM=rm -rf
 
 OPT=-O2 -lpthread
 
-TEST_IF=wlp2s0,wlp2s0
-
 # INFO LOG LEVEL
 #LIB_LOG_LVL=4
 #OBJ_LOG_LVL=4
@@ -83,13 +81,15 @@ sanity: $(LIB).so
 	@$(RM) 943451_423790771050103_1325449100_n.jpg*
 
 test-1M:
-	wget -O ./test/http-1M-result http://github.com/darcy95/mhttp/raw/travis/test/blobs/1M
-	sudo LD_PRELOAD=./libmpsocket.so INITIAL_CHUNK_SIZE_IN_KB=64 CONNECTIONS=2 INTERFACES=$(T_IFS) IPADDRS=0 wget -e robots=off -E -H -K -v -t 1 --no-check-certificate --no-cache --no-proxy --no-dns-cache -p -O ./test/mhttp-1M-result http://github.com/darcy95/mhttp/raw/travis/test/blobs/1M
+	mkdir -p ./test
+	wget -O ./test/http-1M-result http://fishi.devtail.com/content-images/mhttp-blobs/1M
+	sudo LD_PRELOAD=./libmpsocket.so INITIAL_CHUNK_SIZE_IN_KB=64 CONNECTIONS=2 INTERFACES=eth0,eth0 IPADDRS=0 wget -e robots=off -E -H -K -v -t 1 --no-check-certificate --no-cache --no-proxy --no-dns-cache -O ./test/mhttp-1M-result http://fishi.devtail.com/content-images/mhttp-blobs/1M
 	diff ./test/mhttp-1M-result ./test/http-1M-result && (echo "Success" && exit 0) || (exit 1)
 
 test-5M:
-	wget -O ./test/http-5M-result http://github.com/darcy95/mhttp/raw/travis/test/blobs/5M
-	sudo LD_PRELOAD=./libmpsocket.so INITIAL_CHUNK_SIZE_IN_KB=64 CONNECTIONS=2 INTERFACES=$(T_IFS) IPADDRS=0 wget -e robots=off -E -H -K -v -t 1 --no-check-certificate --no-cache --no-proxy --no-dns-cache -p -O ./test/mhttp-5M-result http://github.com/darcy95/mhttp/raw/travis/test/blobs/5M
+	mkdir -p ./test
+	wget -O ./test/http-5M-result http://fishi.devtail.com/content-images/mhttp-blobs/5M
+	sudo LD_PRELOAD=./libmpsocket.so INITIAL_CHUNK_SIZE_IN_KB=64 CONNECTIONS=2 INTERFACES=eth0,eth0 IPADDRS=0 wget -e robots=off -E -H -K -v -t 1 --no-check-certificate --no-cache --no-proxy --no-dns-cache -O ./test/mhttp-5M-result http://fishi.devtail.com/content-images/mhttp-blobs/5M
 	diff ./test/mhttp-5M-result ./test/http-5M-result && (echo "Success" && exit 0) || (exit 1)
     
 
