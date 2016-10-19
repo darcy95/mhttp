@@ -1,3 +1,6 @@
+### Status
+[![Master branch build status](https://travis-ci.org/darcy95/mhttp.svg?branch=master)](https://travis-ci.org/darcy95/mhttp.svg?branch=master)
+
 # mHTTP
 In today’s Internet, one of the main detriments in user experience is completion times of data transfers that for large objects is limited by network capacity. However, recent developments have opened new opportunities for reducing end-to-end latencies. First, most end-user devices have multiple network interfaces (i. e., interface diversity). Second, popular contents are often available at multiple locations in the network (i. e., data source diversity). When combined, these provide substantial path diversity within the Internet that can be used by users to improve their quality of experience.
 
