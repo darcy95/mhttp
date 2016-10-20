@@ -1,0 +1,7 @@
+.libs
+.deps
+.obj
+libmpsocket.o
+libmpsocket.so
+*.swp
+
